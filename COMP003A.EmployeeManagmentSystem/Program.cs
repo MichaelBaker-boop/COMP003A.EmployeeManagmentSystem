@@ -26,7 +26,7 @@ namespace COMP003A.EmployeeManagmentSystem
         {
 
             get { return _employeeId; } // Read only property
-
+            set { _employeeId = value; }
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace COMP003A.EmployeeManagmentSystem
     /// <summary>
     /// HR Department class derived from Department class.
     /// </summary>
-    class HRDepartment : Department
+    class HRDepartment : Department, IDepartmentOperations
     {
         public string Name { get; set; }
 
@@ -208,12 +208,19 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
+        public void Operate() 
+        {
+
+            Console.WriteLine("Performing HR Operations.");
+        
+        }
+
     }
 
     /// <summary>
     /// IT Department class derived from Department class.
     /// </summary>
-    class ITDepartment : Department
+    class ITDepartment : Department, IDepartmentOperations
     {
         public string Name { get; set; }
 
@@ -231,13 +238,45 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
+        public void Operate()
+        {
+
+            Console.WriteLine("Performing IT Operations.");
+        
+        }
+    }
+
+    /// <summary>
+    /// Defines an interface for methods.
+    /// </summary>
+    interface IDepartmentOperations 
+    {
+
+        void Operate();
+    
     }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+
+            Employee employee = new Employee("", "", "", 1 , "");
+
+            Console.WriteLine("Enter Employee ID: ");
+            employee.EmployeeId = Console.ReadLine();
+
+            Console.WriteLine("Enter First Name: ");
+            employee.FirstName = Console.ReadLine();
+
+            Console.WriteLine("Enter Middle Name (Press Enter to skip): ");
+            employee.MiddleName = Console.ReadLine();
+
+            Console.WriteLine("Enter Last Name: ");
+            employee.LastName = Console.ReadLine();
+
+            employee.DisplayEmployeeInfo();
+
         }
     }
 }
