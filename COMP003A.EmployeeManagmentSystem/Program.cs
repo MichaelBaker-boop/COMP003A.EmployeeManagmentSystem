@@ -16,12 +16,20 @@ namespace COMP003A.EmployeeManagmentSystem
         private double _salary;
 
         // Properties
+
+        /// <summary>
+        /// Gets the Employee ID.
+        /// </summary>
         public string EmployeeId
         {
 
             get { return _employeeId; } // Read only property
 
         }
+
+        /// <summary>
+        /// Gets or sets the first name, and validates the input.
+        /// </summary>
         public string FirstName
         {
         
@@ -41,25 +49,75 @@ namespace COMP003A.EmployeeManagmentSystem
             }
 
         }
+
+        /// <summary>
+        /// Gets or sets the middle name, and validates the input.
+        /// </summary>
         public string MiddleName
         {
 
             get { return _middleName; }
             set
             {
-                if (string.IsNullOrEmpty(MiddleName))
+                if (MiddleName == null)
                 {
                     throw new ArgumentNullException(nameof(MiddleName));
-                    Console.WriteLine("Name cannot be Null or Empty");
+                    Console.WriteLine("Name cannot be Null.");
                 }
+                
                 else
                 {
-                    _firstName = value;
+                    _middleName = value;
                 }
 
             }
         }
-    
+
+        /// <summary>
+        /// Gets or sets the last name, and validates the input.
+        /// </summary>
+        public string LastName
+        {
+
+            get { return _lastName; }
+            set
+            {
+                if (string.IsNullOrEmpty(LastName))
+                {
+                    throw new ArgumentNullException(nameof(LastName));
+                    Console.WriteLine("Name cannot be Null or Empty.");
+                }
+
+                else
+                {
+                    _middleName = value;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets salary amount, making sure the value is not less than 0.
+        /// </summary>
+        public double Salary 
+        {
+
+            get { return _salary; }
+            set 
+            {
+                if (value > 0)
+                {
+                    _salary = value;
+                }
+                else 
+                {
+                    Console.WriteLine("Salary must be greater than 0.");
+                }
+                
+            }
+
+        }
+
     }
     
     internal class Program
