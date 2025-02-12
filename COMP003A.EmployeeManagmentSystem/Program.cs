@@ -118,8 +118,28 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
+        /// <summary>
+        /// Contructor for Employee
+        /// </summary>
+        /// <param name="EmployeeID"></param>
+        /// <param name="FirstName"></param>
+        /// <param name="MiddleName"></param>
+        /// <param name="LastName"></param>
+        /// <param name="Salary"></param>
+        public Employee(string EmployeeID, string FirstName, string LastName, string MiddleName = "", double Salary)
+        { 
+        
+            _employeeId = EmployeeID;
+            _firstName = FirstName;
+            _middleName=MiddleName;
+            _lastName = LastName;
+            _salary = Salary;
+        
+        }
+
+
     }
-    
+
     internal class Program
     {
         static void Main(string[] args)
