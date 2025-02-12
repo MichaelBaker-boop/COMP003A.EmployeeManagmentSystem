@@ -5,9 +5,9 @@
 
 namespace COMP003A.EmployeeManagmentSystem
 {
-   internal class Employee 
+    internal class Employee
     {
-    
+
         // Fields
         private string _employeeId;
         private string _firstName;
@@ -32,7 +32,7 @@ namespace COMP003A.EmployeeManagmentSystem
         /// </summary>
         public string FirstName
         {
-        
+
             get { return _firstName; }
             set
             {
@@ -45,7 +45,7 @@ namespace COMP003A.EmployeeManagmentSystem
                 {
                     _firstName = value;
                 }
-                
+
             }
 
         }
@@ -64,7 +64,7 @@ namespace COMP003A.EmployeeManagmentSystem
                     throw new ArgumentNullException(nameof(MiddleName));
                     Console.WriteLine("Name cannot be Null.");
                 }
-                
+
                 else
                 {
                     _middleName = value;
@@ -99,21 +99,21 @@ namespace COMP003A.EmployeeManagmentSystem
         /// <summary>
         /// Gets and sets salary amount, making sure the value is not less than 0.
         /// </summary>
-        public double Salary 
+        public double Salary
         {
 
             get { return _salary; }
-            set 
+            set
             {
                 if (value > 0)
                 {
                     _salary = value;
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Salary must be greater than 0.");
                 }
-                
+
             }
 
         }
@@ -126,16 +126,31 @@ namespace COMP003A.EmployeeManagmentSystem
         /// <param name="MiddleName"></param>
         /// <param name="LastName"></param>
         /// <param name="Salary"></param>
-        public Employee(string EmployeeID, string FirstName, string LastName, string MiddleName = "", double Salary)
-        { 
-        
+        public Employee(string EmployeeID, string FirstName, string LastName, double Salary, string MiddleName = "")
+        {
+
             _employeeId = EmployeeID;
             _firstName = FirstName;
-            _middleName=MiddleName;
+            _middleName = MiddleName;
             _lastName = LastName;
             _salary = Salary;
-        
+
         }
+
+        public void EmployeeName() 
+        {
+
+            if (_middleName == "")
+            {
+                Console.WriteLine($"{_firstName} {_lastName}");
+            }
+            else 
+            {
+                Console.WriteLine($"{_firstName} {_middleName} {_lastName}");
+            }
+
+        }
+            
 
 
     }
