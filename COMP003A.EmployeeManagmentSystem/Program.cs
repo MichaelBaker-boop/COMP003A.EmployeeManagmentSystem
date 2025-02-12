@@ -38,15 +38,9 @@ namespace COMP003A.EmployeeManagmentSystem
             get { return _firstName; }
             set
             {
-                if (string.IsNullOrEmpty(FirstName))
-                {
-                    throw new ArgumentNullException(nameof(FirstName));
-                    Console.WriteLine("Name cannot be Null or Empty");
-                }
-                else
-                {
-                    _firstName = value;
-                }
+
+
+                _firstName = value;
 
             }
 
@@ -84,16 +78,8 @@ namespace COMP003A.EmployeeManagmentSystem
             get { return _lastName; }
             set
             {
-                if (string.IsNullOrEmpty(LastName))
-                {
-                    throw new ArgumentNullException(nameof(LastName));
-                    Console.WriteLine("Name cannot be Null or Empty.");
-                }
-
-                else
-                {
+               
                     _middleName = value;
-                }
 
             }
         }
@@ -175,7 +161,7 @@ namespace COMP003A.EmployeeManagmentSystem
          public string DepartmentName {  get; set; }
 
 
-         public abstract void GetDepartmentDetails();
+         public abstract string  GetDepartmentDetails();
 
          public void DisplayDepartmentInfo() 
          {
@@ -201,10 +187,10 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
-        public override void GetDepartmentDetails()
+        public override string GetDepartmentDetails()
         {
 
-            Console.WriteLine($"Handles employee relations and recruitment.");
+            return "Handles employee relations and recruitment.";
 
         }
 
@@ -231,10 +217,10 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
-        public override void GetDepartmentDetails()
+        public override string GetDepartmentDetails()
         {
 
-            Console.WriteLine($"Manages technical resources and infrastructure.");
+            return "Manages technical resources and infrastructure.";
 
         }
 
@@ -275,7 +261,19 @@ namespace COMP003A.EmployeeManagmentSystem
             Console.WriteLine("Enter Last Name: ");
             employee.LastName = Console.ReadLine();
 
+            Console.WriteLine("Enter Salary: \n");
+            employee.Salary = double.Parse(Console.ReadLine());
+
             employee.DisplayEmployeeInfo();
+
+            HRDepartment hRDepartment = new HRDepartment();
+            Console.WriteLine($"Details: {hRDepartment.GetDepartmentDetails}\n");
+            ((IDepartmentOperations)hRDepartment).Operate();
+
+            ITDepartment iTDepartment = new ITDepartment();
+            Console.WriteLine($"Details: {iTDepartment.GetDepartmentDetails}\n");
+            ((IDepartmentOperations)(iTDepartment)).Operate();
+            
 
         }
     }
