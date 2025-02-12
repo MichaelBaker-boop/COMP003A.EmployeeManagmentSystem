@@ -3,6 +3,8 @@
 // Faculty: Jonathan Cruz
 // Purpose: Employee management system demonstrating OOP prinnciples in C#
 
+using System.Reflection.Metadata.Ecma335;
+
 namespace COMP003A.EmployeeManagmentSystem
 {
     internal class Employee
@@ -140,40 +142,94 @@ namespace COMP003A.EmployeeManagmentSystem
         /// <summary>
         /// Method for displaying full name of employee.
         /// </summary>
-        public void PrintFullName() 
+        public void PrintFullName()
         {
 
             if (_middleName == "")
             {
                 Console.WriteLine($"{_firstName} {_lastName}");
             }
-            else 
+            else
             {
                 Console.WriteLine($"{_firstName} {_middleName} {_lastName}");
             }
 
         }
 
-        public void DisplayEmployeeInfo() 
+        public void DisplayEmployeeInfo()
         {
-        
+
             PrintFullName();
             Console.WriteLine($"Salary: {_salary}");
-        
-        }
 
-        /// <summary>
-        /// Abstract class for department blueprints.
-        /// </summary>
-        abstract class Department
-        {
-        
-            // Auto-implemented property
-            public string DepartmentName {  get; set; }
-        
         }
+    }
+
+    /// <summary>
+    /// Abstract class for department blueprints.
+    /// </summary>
+    abstract class Department
+    {
+        
+         // Auto-implemented property
+         public string DepartmentName {  get; set; }
+
+
+         public abstract void GetDepartmentDetails();
+
+         public void DisplayDepartmentInfo() 
+         {
+
+            Console.WriteLine($"{DepartmentName}");
             
+         }
+            
+        
+    }
 
+    /// <summary>
+    /// HR Department class derived from Department class.
+    /// </summary>
+    class HRDepartment : Department
+    {
+        public string Name { get; set; }
+
+        public HRDepartment()
+        {
+
+            Name = "HR Department";
+
+        }
+
+        public override void GetDepartmentDetails()
+        {
+
+            Console.WriteLine($"Handles employee relations and recruitment.");
+
+        }
+
+    }
+
+    /// <summary>
+    /// IT Department class derived from Department class.
+    /// </summary>
+    class ITDepartment : Department
+    {
+        public string Name { get; set; }
+
+        public ITDepartment()
+        {
+
+            Name = "IT Department";
+
+        }
+
+        public override void GetDepartmentDetails()
+        {
+
+            Console.WriteLine($"Manages technical resources and infrastructure.");
+
+        }
 
     }
 
