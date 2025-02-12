@@ -7,16 +7,6 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace COMP003A.EmployeeManagmentSystem
 {
-    /// <summary>
-    /// Defines an interface for methods.
-    /// </summary>
-    interface IDepartmentOperations 
-    {
-
-        void Operate();
-    
-    }
-
     internal class Program
     {
         static void Main(string[] args)
@@ -24,8 +14,21 @@ namespace COMP003A.EmployeeManagmentSystem
 
             Employee employee = new Employee("", "", "", 1 , "");
 
-            Console.WriteLine("Enter Employee ID: ");
-            employee.EmployeeId = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Enter Employee ID: ");
+                employee.EmployeeId = Console.ReadLine();
+                if (
+            }
+            catch (Exception e) 
+            {
+
+                Console.WriteLine(e.Message);
+
+            }
+
+
+
 
             Console.WriteLine("Enter First Name: ");
             employee.FirstName = Console.ReadLine();
