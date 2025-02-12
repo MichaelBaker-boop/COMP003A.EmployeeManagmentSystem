@@ -137,7 +137,10 @@ namespace COMP003A.EmployeeManagmentSystem
 
         }
 
-        public void EmployeeName() 
+        /// <summary>
+        /// Method for displaying full name of employee.
+        /// </summary>
+        public void PrintFullName() 
         {
 
             if (_middleName == "")
@@ -149,6 +152,25 @@ namespace COMP003A.EmployeeManagmentSystem
                 Console.WriteLine($"{_firstName} {_middleName} {_lastName}");
             }
 
+        }
+
+        public void DisplayEmployeeInfo() 
+        {
+        
+            PrintFullName();
+            Console.WriteLine($"Salary: {_salary}");
+        
+        }
+
+        /// <summary>
+        /// Abstract class for department blueprints.
+        /// </summary>
+        abstract class Department
+        {
+        
+            // Auto-implemented property
+            public string DepartmentName {  get; set; }
+        
         }
             
 
