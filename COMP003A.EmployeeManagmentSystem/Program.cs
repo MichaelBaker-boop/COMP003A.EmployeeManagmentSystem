@@ -18,7 +18,6 @@ namespace COMP003A.EmployeeManagmentSystem
             {
                 Console.WriteLine("Enter Employee ID: ");
                 employee.EmployeeId = Console.ReadLine();
-                if (
             }
             catch (Exception e) 
             {
